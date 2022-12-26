@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:signindatabaza/pages/home_page.dart';
 import 'package:signindatabaza/pages/signup_page.dart';
 import 'package:signindatabaza/services/sevices.dart';
 
@@ -47,6 +49,7 @@ class _SignINState extends State<SignIN> {
                             GestureDetector(
                                 onTap: () {
                                   setState(() {
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp(),));
                                     print('Sign up');
                                   });
                                 },
@@ -115,6 +118,7 @@ class _SignINState extends State<SignIN> {
                   onPressed: (){
                     setState(() {
                       dataUser();
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
                     });
                   },
                   minWidth: double.infinity,
@@ -170,9 +174,8 @@ class _SignINState extends State<SignIN> {
 
   void dataUser(){
     HiveDB.storeUser(User(email: _email.text,password: _password.text));
-     User user =HiveDB.loadUser();
-     print(user.email);
-     print(user.password);
+     Map<String?, dynamic> user =HiveDB.loadUser();
+     print(user);
   }
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/sevices.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,9 +16,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.grey.shade500,
         body: Center(
-          child: Text('HELLO WORLD',style: TextStyle(color: Colors.white),),
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: (){
+                  HiveDB.removeUser();
+                },
+                child: Text('Remove User'),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  HiveDB.removeCreateUser();
+                },
+                child: Text('Remove CreateUser'),
+              )
+            ],
+          )
         )
       ),
     );

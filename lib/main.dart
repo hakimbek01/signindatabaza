@@ -3,10 +3,13 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:signindatabaza/pages/home_page.dart';
 import 'package:signindatabaza/pages/signin_page.dart';
+import 'package:signindatabaza/pages/signup_page.dart';
+import 'package:signindatabaza/pages/splash_page.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox('baza1');
+  await Hive.openBox('baza2');
   runApp(const MyApp());
 }
 
