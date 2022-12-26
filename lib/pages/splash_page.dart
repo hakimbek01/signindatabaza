@@ -30,8 +30,9 @@ class _SplashPageState extends State<SplashPage> {
 
   void dataBaza(){
     Map<String?,dynamic> crateUser=HiveDB.loadCreateUser();
-    print('$crateUser slaom');
-    if ((crateUser.isEmpty || crateUser==null)) {
+    Map<String?,dynamic> user=HiveDB.loadUser();
+    print('$crateUser salom');
+    if ((crateUser.isEmpty || crateUser==null) && (user.isEmpty || user==null)) {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignIN(),));
     } else {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
